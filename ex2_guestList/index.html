@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title>Guest List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>To Do Tasks</h1>
+    <h1>Lista de Convidados</h1>
     <div id="app">
-        <input type="text" id="taskInput" placeholder="Adicione uma tarefa">
-        <button id="addTask">Adicionar Tarefa</button>
-        <ul id="taskList">
+        <div id="functions">
+            <input type="text" id="guestInput" placeholder="Adicionar Convidado">
+            <button id="addGuest">Adicionar</button>
+            <p id="alerta"></p>
+        </div>
+        <ul id="guestList">
             <!-- As tarefas serão adicionadas aqui dinamicamente -->
         </ul>
     </div>
