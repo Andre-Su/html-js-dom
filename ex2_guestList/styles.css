@@ -27,7 +27,7 @@ ul {
     padding: 0;
 }
 
-li {
+.itemsList {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,4 +64,9 @@ button {
     border: 2px;
     border-color: #0066ff;
     border-radius: 7px;
+}
+
+#deleteAll{
+  background-color: red;
+  color: white;
 }

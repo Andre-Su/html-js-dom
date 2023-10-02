@@ -1,18 +1,27 @@
 //elementos
-const botaoAddGuest = document.getElementById('addGuest'); //botão
-const inputGuest = document.getElementById('guestInput'); //caixa de entrada de texto
-const guestList = document.getElementById('guestList'); //elemento de lista pai
-var checkBoxElmnt = document.querySelectorAll("input[type='checkbox']"); //checkbox nas listas
-var btnDeletar = document.querySelectorAll("button[class='deletar']"); //botão para apagar elemento
-const r = /\d+/;
-var erro = 0;
-var count = 0;
-/*
+const botaoAddGuest = document.getElementById('addGuest'); 
+//botão para adicionar itens
+const inputGuest = document.getElementById('guestInput');
+//caixa de entrada de texto
+const guestList = document.getElementById('guestList');
+//elemento de lista pai
+const btnDeleteAll = document.getElementById('deleteAll'); 
+//botão deletar tudo
+var checkBoxElmnt = document.querySelectorAll("input[type='checkbox']"); 
+//checkbox nas listas
+var btnDeletar = document.querySelectorAll("button[class='deletar']"); 
+//botão para apagar elemento
+var todosItens = document.querySelectorAll('li[class="itemsList"]'); 
+//todos os elementos 'li'
+
+const r = /\d+/; //detectar número
+var count = 0; //contador de itens da lista 
+/* // sistema de detectar nomes inválidos em forma de função 
+var erro = 0; 
 for (let i = 0; i < checkBoxElmnt.length; i++) {
     //escutador de checkbox
     checkBoxElmnt['check-' + i].addEventListener("click", riscarTexto(i));
 }
-*/
 
 function verificador(str,erro) {
     const caracteres = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -42,6 +51,7 @@ function verificador(str,erro) {
         return false;
     }
   }
+*/
 
 function addGuestEvent(){
     console.log('botão clicado');
@@ -66,8 +76,9 @@ function addGuestEvent(){
         alerta.innerHTML = 'Convidado Adicionado';
         console.log('convidado adicionado');
 
-        //cria o container da tarefa
+        //cria o container do item do objeto
         const guestItem = document.createElement('li');
+        guestItem.className = 'itemsList'
         guestItem.id = 'li-' + count;
 
         //cria o checkbox
@@ -127,17 +138,19 @@ function riscarTexto(BoxID,check){
     let id = 'item-'+pos[0];
     //elemento a ser riscado
     const item = document.getElementById(id);
+    
     if(check){
     alerta.innerHTML = ('item riscado na posição '+pos[0]);
         item.style.color = "gray";
         item.style.textDecoration = 'line-through';
+        
+        setTimeout(()=>{
+        alerta.innerHTML = '';
+    },1500);
     }else{
         item.style.color = "black";
         item.style.textDecoration = 'none';
     }
-    setTimeout(()=>{
-        alerta.innerHTML = '';
-    },1500);
 }
 
 function apagarItem(delID){
@@ -155,6 +168,29 @@ function apagarItem(delID){
         alerta.innerHTML = '';
     },1500);
 };
+
+function deleteAllEvent(){
+	todosItens = document.querySelectorAll('li[class="itemsList"]');
+	console.log(todosItens.length)
+	if(todosItens.length>0){
+		console.log('delete all true');
+		for(var i = 0; i < todosItens.length; i++){
+			console.log('removido item '+i)
+			todosItens[i].remove();
+			alerta.innerHTML = 'Todos os itens foram apagados!';
+		}
+	} else{
+		console.log('delete all false');
+		alerta.innerHTML = 'A lista está vazia!';
+		
+	}
+	count = 0;
+  setTimeout(()=>{
+        alerta.innerHTML = '';
+    },1500);
+}
+
+btnDeleteAll.addEventListener('click',deleteAllEvent);
 
 botaoAddGuest.addEventListener('click',addGuestEvent);
 
