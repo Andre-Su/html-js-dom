@@ -1,57 +1,23 @@
 //elementos
-const botaoAddGuest = document.getElementById('addGuest'); 
 //botão para adicionar itens
-const inputGuest = document.getElementById('guestInput');
+const botaoAddGuest = document.getElementById('addGuest'); 
 //caixa de entrada de texto
-const guestList = document.getElementById('guestList');
+const inputGuest = document.getElementById('guestInput');
 //elemento de lista pai
-const btnDeleteAll = document.getElementById('deleteAll'); 
+const guestList = document.getElementById('guestList');
 //botão deletar tudo
-var checkBoxElmnt = document.querySelectorAll("input[type='checkbox']"); 
+const btnDeleteAll = document.getElementById('deleteAll'); 
 //checkbox nas listas
-var btnDeletar = document.querySelectorAll("button[class='deletar']"); 
+var checkBoxElmnt = document.querySelectorAll("input[type='checkbox']"); 
 //botão para apagar elemento
-var todosItens = document.querySelectorAll('li[class="itemsList"]'); 
+var btnDeletar = document.querySelectorAll("button[class='deletar']"); 
 //todos os elementos 'li'
+var todosItens = document.querySelectorAll('li[class="itemsList"]'); 
 
-const r = /\d+/; //detectar número
-var count = 0; //contador de itens da lista 
-/* // sistema de detectar nomes inválidos em forma de função 
-var erro = 0; 
-for (let i = 0; i < checkBoxElmnt.length; i++) {
-    //escutador de checkbox
-    checkBoxElmnt['check-' + i].addEventListener("click", riscarTexto(i));
-}
-
-function verificador(str,erro) {
-    const caracteres = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    const numeros = /\d/;
-    const vazio = "";
-    //erro = 0;
-    if(caracteres.test(str)){
-        console.log('pego erro 3')
-        erro = 3;
-        console.log(erro)
-        return true;
-    } else if(numeros.test(str)){
-        console.log('pego erro 2')
-        erro = 2;
-        console.log(erro)
-        return true;
-    } else if(str==""){
-        console.log('pego erro 1')
-        erro = 1;
-        console.log(erro)
-        return true;
-    }
-     else{
-        console.log('sem erro')
-        erro = 0;
-        console.log(erro)
-        return false;
-    }
-  }
-*/
+//detectar número
+const r = /\d+/; 
+//contador de itens da lista 
+var count = 0; 
 
 function addGuestEvent(){
     console.log('botão clicado');
@@ -74,7 +40,7 @@ function addGuestEvent(){
 
     }else{
         alerta.innerHTML = 'Convidado Adicionado';
-        console.log('convidado adicionado');
+        console.log('item '+count+' adicionado');
 
         //cria o container do item do objeto
         const guestItem = document.createElement('li');
